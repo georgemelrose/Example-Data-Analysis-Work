@@ -10,8 +10,7 @@ start_time <- Sys.time()
 pacman::p_load(data.table, purrr, tictoc,
                httr, visdat, naniar, stringr,
                here,dbplyr, Rcpp, DBI, odbc, packrat,
-               writexl,tidyverse,lubridate,
-               cowplot,flextable,gtsummary,janitor,forcats, 
+               writexl,tidyverse,lubridate,flextable,janitor, 
                highr,rstudioapi,keyring)
 
 # get today's date
