@@ -228,30 +228,11 @@ if (exists("download_times") && nrow(download_times) > 0) {
 }
 
 
-# Create a data frame with script name and elapsed time
-script_name <- "0_data_import_manipulation.Rmd"  # Replace with your script name
-data <- data.frame("Script Name" = script_name, "Elapsed Time (Minutes)" = elapsed_time, "Date and Time" = format(start_time, "%Y-%m-%d %H:%M:%S"))
-
-data$download <- NULL
-
-# Check if missing_table_download_times dataframe exists and has at least 1 row
-if (exists("missing_table_download_times") && nrow(missing_table_download_times) > 0) {
-  data$Download <- "Missing tables downloaded"
-} else {
-  # Check if download_times dataframe exists and has at least 1 row
-  if (exists("download_times") && nrow(download_times) > 0) {
-    data$Download <- "Full Download"
-  } else {
-    data$Download <- "No Download"
-  }
-}
-
-
-
 # Saving script timings####
 
+
 # Create a data frame with script name and elapsed time
-script_name <- "Example SQL Data Import Script"  # Replace with your script name
+script_name <- "Example SQL Data Import Script.R"  # Replace with your script name
 data <- data.frame("Script Name" = script_name, "Elapsed Time (Minutes)" = elapsed_time, "Date and Time" = format(start_time, "%Y-%m-%d %H:%M:%S"))
 
 data$download <- NULL
@@ -268,8 +249,9 @@ if (exists("missing_table_download_times") && nrow(missing_table_download_times)
   }
 }
 
+
 # Check if the CSV file exists
-csv_file <- paste0("C:/Users/", Sys.info()[[6]],"/Savingpath/run_times.csv")
+csv_file <- paste0("C:/Users/", Sys.info()[[6]],"/OneDrive - University of Cambridge/General - CRO_Data/Data/OA Project/run_times.csv")
 
 data <- data %>% dplyr::rename("Date and Time" = "Date.and.Time")
 
@@ -291,4 +273,3 @@ if (file.exists(csv_file)) {
   # If the file doesn't exist, create a new file with the data
   write.csv(data, file = csv_file, row.names = FALSE, quote = FALSE)
 }
-
